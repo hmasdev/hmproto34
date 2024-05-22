@@ -116,8 +116,8 @@ tap_dance_action_t tap_dance_actions[] = {
 
 
 /* combo start */
-const uint16_t PROGMEM KC_COMM_K[] = {KC_COMM, KC_K, COMBO_END};
-const uint16_t PROGMEM KC_COMM_B [] = {KC_COMM, KC_B, COMBO_END};
+const uint16_t PROGMEM KC_COMM_K[] = {LT(KL_OPE, KC_COMM), KC_K, COMBO_END};
+const uint16_t PROGMEM KC_COMM_B [] = {LT(KL_OPE, KC_COMM), KC_B, COMBO_END};
 const uint16_t PROGMEM KC_HJ[] = {KC_H, KC_J, COMBO_END};
 const uint16_t PROGMEM KC_YN[] = {KC_Y, KC_N, COMBO_END};
 const uint16_t PROGMEM KC_NM[] = {KC_N, KC_M, COMBO_END};
@@ -160,7 +160,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_Q,                KC_W,                KC_E,                KC_R,                KC_T,                KC_Y,                KC_U,                KC_I,                KC_O,                LGUI_T(KC_P),
         KC_A,                KC_S,                KC_D,                KC_F,                KC_G,                KC_H,                KC_J,                KC_K,                KC_L,                KC_SCLN,
         KC_Z,                KC_X,                KC_C,                KC_V,                KC_B,                KC_N,                KC_M,                CKC_KI,              CKC_NN,              LCTL_T(KC_SLSH),
-        LSFT_T(KC_BSPC),     XXXXXXX,             XXXXXXX,             XXXXXXX,             LT(KC_COMM, KL_OPE), LT(KC_DOT, KL_FUN),  XXXXXXX,             XXXXXXX,             XXXXXXX,             LALT_T(KC_SPACE)
+        LSFT_T(KC_BSPC),     XXXXXXX,             XXXXXXX,             XXXXXXX,             LT(KL_OPE, KC_COMM), LT(KL_FUN, KC_DOT),  XXXXXXX,             XXXXXXX,             XXXXXXX,             LALT_T(KC_SPACE)
     ),
 
     // mod norman
@@ -168,7 +168,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_Q,                KC_W,                KC_D,                KC_F,                KC_B,                KC_J,                KC_U,                KC_R,                KC_P,                KC_SCLN,
         KC_A,                KC_S,                KC_E,                KC_T,                KC_G,                KC_Y,                KC_N,                KC_I,                KC_O,                KC_L,
         KC_Z,                KC_X,                KC_C,                KC_V,                KC_K,                KC_H,                KC_M,                CKC_IR,              CKC_NN,              LCTL_T(KC_SLSH),
-        LSFT_T(KC_BSPC),     XXXXXXX,             XXXXXXX,             XXXXXXX,             LT(KC_COMM, KL_OPE), LT(KC_DOT, KL_FUN),  XXXXXXX,             XXXXXXX,             XXXXXXX,             LALT_T(KC_SPACE)
+        LSFT_T(KC_BSPC),     XXXXXXX,             XXXXXXX,             XXXXXXX,             LT(KL_OPE, KC_COMM), LT(KL_FUN, KC_DOT),  XXXXXXX,             XXXXXXX,             XXXXXXX,             LALT_T(KC_SPACE)
     ),
 
     // Ope
