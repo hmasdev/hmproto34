@@ -6,6 +6,8 @@
 
 hmproto34 is a hand-fitted keyboard with 34 keys.
 
+![hmproto34](https://pbs.twimg.com/media/GOMeMuba8AA7y6z?format=jpg&name=small)
+
 ## How to Use
 
 ### How to Build Firmware
@@ -60,11 +62,15 @@ OK. Now, you can use your hmproto34 keyboard! Try typing something!
 
 ### PCB
 
-TBD
+Gerber files are located in [./pcb](./pcb) directory.
+You can order PCBs from PCB manufacturers like JLCPCB etc.
 
 ### Top Plate
 
-TBD
+Gerber files are located in [./top_plate](./top_plate) directory.
+You can order PCBs from PCB manufacturers like JLCPCB etc.
+
+See [./top_plate/hmproto34-Edge_Cuts.svg](./top_plate/hmproto34-Edge_Cuts.svg) for the shape of the top plate.
 
 ## LICENSE
 
@@ -73,3 +79,11 @@ TBD
 ## Author
 
 - [hmasdev](https://github.com/hmasdev)
+
+## References
+
+- QMK Firmware: [https://docs.qmk.fm/](https://docs.qmk.fm/#/)
+- QMK MSYS: [https://msys.qmk.fm/](https://msys.qmk.fm/)
+- kbd:[https://github.com/foostan/kbd](https://github.com/foostan/kbd), [https://github.com/7-rate/kbd](https://github.com/7-rate/kbd)
+- Pro Micro Web Updater: [https://sekigon-gonnoc.github.io/promicro-web-updater/index.html](https://sekigon-gonnoc.github.io/promicro-web-updater/index.html)
+- 自作キーボード設計入門: [https://pskbd.booth.pm/items/1044084](https://pskbd.booth.pm/items/1044084)
