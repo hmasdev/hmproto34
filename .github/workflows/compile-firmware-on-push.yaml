@@ -1,0 +1,14 @@
+name: Compile On Push
+
+on:
+  push:
+    tags:
+    branches:
+      - "main"
+
+jobs:
+  Compile Firmware:
+    uses: ./.github/workflows/compile-firmware-workflow-call.yaml
+    with:
+      git-ref: ${{ github.ref }}
+      keymap: "default"
