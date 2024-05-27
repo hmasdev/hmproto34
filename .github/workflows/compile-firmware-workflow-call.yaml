@@ -55,7 +55,7 @@ jobs:
           qmk compile -kb "${KEYBOARD_NAME}" -km "${KEYMAP_NAME}"
         env:
           KEYBOARD_NAME: "hmproto34"
-          KEYMAP_NAME: ${{ github.event.inputs.keymap }}
+          KEYMAP_NAME: ${{ inputs.keymap }}
       - name: Create Artifacts Directory
         run: |
           mkdir -p ~/artifacts
@@ -63,9 +63,9 @@ jobs:
           cp ./LICENSE ~/artifacts/
         env:
           KEYBOARD_NAME: "hmproto34"
-          KEYMAP_NAME: ${{ github.event.inputs.keymap }}
+          KEYMAP_NAME: ${{ inputs.keymap }}
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: hmproto34-${{ github.event.inputs.keymap }}
+          name: hmproto34-${{ inputs.keymap }}
           path: ~/artifacts
