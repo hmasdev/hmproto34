@@ -11,4 +11,4 @@ jobs:
     uses: ./.github/workflows/compile-firmware-workflow-call.yaml
     with:
       git-ref: ${{ github.ref }}
-      keymap: "default"
+      keymap: default
