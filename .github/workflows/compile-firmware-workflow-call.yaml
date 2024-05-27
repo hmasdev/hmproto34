@@ -27,7 +27,7 @@ on:
         description: "Keymap name. Default is default."
 
 jobs:
-  Compile:
+  compile:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Repository

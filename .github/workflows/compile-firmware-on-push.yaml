@@ -7,7 +7,7 @@ on:
       - "main"
 
 jobs:
-  Compile Firmware:
+  compile:
     uses: ./.github/workflows/compile-firmware-workflow-call.yaml
     with:
       git-ref: ${{ github.ref }}
