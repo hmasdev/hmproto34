@@ -137,8 +137,8 @@ const uint16_t PROGMEM KC_HOME_LEFT[] = {KC_HOME, KC_LEFT, COMBO_END};
 const uint16_t PROGMEM KC_TAB_COMM[] = {LSFT_T(KC_TAB), LT(KL_OPE, KC_COMM), COMBO_END};
 const uint16_t PROGMEM KC_GRV_SPACE[] = {LALT_T(KC_GRV), LT(KL_FUN, KC_SPACE), COMBO_END};
 
-const uint16_t PROGMEM CKC_00_KC_0[] = {CKC_00, KC_0, COMBO_END};
-const uint16_t PROGMEM CKC_00_KC_1[] = {CKC_00, KC_1, COMBO_END};
+const uint16_t PROGMEM KC_ENT_KC_0[] = {KC_ENT, KC_0, COMBO_END};
+const uint16_t PROGMEM KC_ENT_KC_1[] = {KC_ENT, KC_1, COMBO_END};
 
 const uint16_t PROGMEM KC_QWER[] = {LCTL_T(KC_Q), KC_W, KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM KC_QWDF[] = {LCTL_T(KC_Q), KC_W, KC_D, KC_F, COMBO_END};
@@ -160,8 +160,8 @@ combo_t key_combos[] = {
     COMBO(KC_TAB_COMM, MO(KL_SYMNUM)),
     COMBO(KC_GRV_SPACE, MO(KL_SYMNUM)),
 
-    COMBO(CKC_00_KC_0, KC_BSPC),
-    COMBO(CKC_00_KC_1, KC_ENT),
+    COMBO(KC_ENT_KC_0, KC_BSPC),
+    COMBO(KC_ENT_KC_1, LSFT(KC_ENT)),
 
     COMBO(KC_QWER, DF(KL_NORMAN)),     // qwerty
     COMBO(KC_QWDF, DF(KL_QWERTY)),     // mod norman
@@ -190,8 +190,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [KL_OPE] = LAYOUT(
         CKC_WO,              CKC_WA,              KC_MS_UP,            CKC_FU,              CKC_BE,              CKC_YOU,             CKC_NU,              KC_UP,               CKC_RO,              LGUI_T(KC_LBRC),
         CKC_ZA,              KC_MS_LEFT,          KC_MS_DOWN,          KC_MS_RIGHT,         KC_BTN1,             KC_HOME,             KC_LEFT,             KC_DOWN,             KC_RIGHT,            KC_END,
-        KC_LGUI,             KC_WH_U,             KC_WH_D,             KC_BTN3,             KC_BTN2,             TD(TD_BRACKET_L),    TD(TD_BRACKET_R),    TD(TD_QUOTE),        CKC_NNN,             LCTL_T(KC_INT1),
-        LSFT_T(KC_TAB),      XXXXXXX,             XXXXXXX,             XXXXXXX,             _______,             LSFT_T(KC_ENT),      XXXXXXX,             XXXXXXX,             XXXXXXX,             LALT_T(KC_QUOT)
+        KC_LSFT,             KC_WH_U,             KC_WH_D,             KC_BTN3,             KC_BTN2,             TD(TD_BRACKET_L),    TD(TD_BRACKET_R),    TD(TD_QUOTE),        CKC_NNN,             LCTL_T(KC_INT1),
+        LT(KL_SYMNUM, KC_TAB),XXXXXXX,            XXXXXXX,             XXXXXXX,             _______,             LSFT_T(KC_ENT),      XXXXXXX,             XXXXXXX,             XXXXXXX,             LALT_T(KC_QUOT)
     ),
 
     // Fun
@@ -207,6 +207,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         LCTL(KC_MINS),       RCS(KC_SCLN),        RCS(KC_ESC),         LSG(KC_LEFT),        LSG(KC_RGHT),        LSFT(KC_MINS),       KC_7,                KC_8,                KC_9,                LSFT(KC_QUOT),
         LSFT(KC_1),          LSFT(KC_SLSH),       LSFT(KC_EQL),        LSFT(KC_6),          LSFT(KC_INT3),       KC_DOT,              KC_4,                KC_5,                KC_6,                KC_SLSH,
         LSFT(KC_LBRC),       CKC_L_ARROW,         CKC_R_ARROW,         LSFT(KC_5),          LSFT(KC_4),          KC_0,                KC_1,                KC_2,                KC_3,                LSFT(KC_SCLN),
-        LSFT(KC_3),          XXXXXXX,             XXXXXXX,             XXXXXXX,             TD(TD_3_QUOTE),      CKC_00,              XXXXXXX,             XXXXXXX,             XXXXXXX,             KC_MINS
+        LSFT(KC_3),          XXXXXXX,             XXXXXXX,             XXXXXXX,             TD(TD_3_QUOTE),      KC_ENT,              XXXXXXX,             XXXXXXX,             XXXXXXX,             KC_MINS
     )
 };
