@@ -17,6 +17,7 @@ enum keymap_layer {
 /* macro start */
 enum cutom_keycodes {
     CKC_BE=SAFE_RANGE,
+    CKC_EXIT,
     CKC_FU,
     CKC_HA,
     CKC_IR,
@@ -31,17 +32,12 @@ enum cutom_keycodes {
     CKC_RYO,
     CKC_WA,
     CKC_WO,
-    CKC_YOU,
     CKC_ZA,
     CKC_L_ARROW,
     CKC_R_ARROW,
-    /* PYTHON */
-    CKC_PYTHON,
     /* PYTHON COMMENT */
     CKC_PY_NOQA,
     CKC_PY_TYPE_IGNORE,
-    /* others */
-    CKC_00,
     /* SAFE RANGE */
     HM_SAFE_RANGE,
 };
@@ -49,6 +45,7 @@ enum cutom_keycodes {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case CKC_BE: if (record->event.pressed) { SEND_STRING("be"); } return false; break;
+        case CKC_EXIT: if (record->event.pressed) { SEND_STRING("exit"); } return false; break;
         case CKC_FU: if (record->event.pressed) { SEND_STRING("fu"); } return false; break;
         case CKC_HA: if (record->event.pressed) { SEND_STRING("ha"); } return false; break;
         case CKC_IR: if (record->event.pressed) { SEND_STRING("ir"); } return false; break;
@@ -63,17 +60,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CKC_RYO: if (record->event.pressed) { SEND_STRING("ryo"); } return false; break;
         case CKC_WA: if (record->event.pressed) { SEND_STRING("wa"); } return false; break;
         case CKC_WO: if (record->event.pressed) { SEND_STRING("wo"); } return false; break;
-        case CKC_YOU: if (record->event.pressed) { SEND_STRING("you"); } return false; break;
         case CKC_ZA: if (record->event.pressed) { SEND_STRING("za"); } return false; break;
         case CKC_L_ARROW: if (record->event.pressed) { SEND_STRING("<- "); } return false; break;
         case CKC_R_ARROW: if (record->event.pressed) { SEND_STRING("-> "); } return false; break;
-        // PYTHON
-        case CKC_PYTHON: if (record->event.pressed) { SEND_STRING("python "); } return false; break;
         // PYTHON COMMENT
         case CKC_PY_NOQA: if (record->event.pressed) { SEND_STRING("  # noqa"); } return false; break;
         case CKC_PY_TYPE_IGNORE: if (record->event.pressed) { SEND_STRING("  # type' ignore"); } return false; break;
-        // others
-        case CKC_00: if (record->event.pressed) { SEND_STRING("00"); } return false; break;
         default: return true; break;
     };
     return true;
@@ -202,7 +194,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     // Ope
     [KL_OPE] = LAYOUT(
-        CKC_WO,              CKC_WA,              KC_MS_UP,            CKC_FU,              CKC_BE,              CKC_YOU,             CKC_NU,              KC_UP,               CKC_RO,              LGUI_T(KC_LBRC),
+        CKC_EXIT,            CKC_WA,              KC_MS_UP,            CKC_FU,              CKC_BE,              CKC_WO,              CKC_NU,              KC_UP,               CKC_RO,              LGUI_T(KC_LBRC),
         CKC_ZA,              KC_MS_LEFT,          KC_MS_DOWN,          KC_MS_RIGHT,         KC_BTN1,             KC_HOME,             KC_LEFT,             KC_DOWN,             KC_RIGHT,            KC_END,
         KC_LSFT,             KC_WH_U,             KC_WH_D,             KC_BTN3,             KC_BTN2,             TD(TD_BRACKET_L),    TD(TD_BRACKET_R),    TD(TD_QUOTE),        CKC_NNN,             LCTL_T(KC_INT1),
         LT(KL_SYMNUM, KC_TAB),XXXXXXX,            XXXXXXX,             XXXXXXX,             _______,             LSFT_T(KC_ENT),      XXXXXXX,             XXXXXXX,             XXXXXXX,             LALT_T(KC_QUOT)
@@ -212,7 +204,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [KL_FUN] = LAYOUT(
         LCTL(KC_0),          LCTL(KC_1),          LCTL(KC_2),          LCTL(KC_3),          LCTL(KC_4),          CKC_NYU,             CKC_RYA,             CKC_RYU,             CKC_RYO,             LGUI_T(KC_F10),
         KC_F1,               KC_F2,               KC_F3,               KC_F4,               KC_F5,               KC_F6,               KC_F7,               KC_F8,               KC_F9,               KC_F11,
-        RCS(KC_E),           CKC_PYTHON,          CKC_PY_TYPE_IGNORE,  CKC_PY_NOQA,         RCS(KC_LBRC),        LCA(KC_DOWN),        LCA(KC_UP),          LCA(KC_LEFT),        LCA(KC_RGHT),        LCTL_T(KC_F12),
+        RCS(KC_E),           CKC_PY_NOQA,         CKC_PY_TYPE_IGNORE,  RCS(KC_EQL),         RCS(KC_LBRC),        LCA(KC_DOWN),        LCA(KC_UP),          LCA(KC_LEFT),        LCA(KC_RGHT),        LCTL_T(KC_F12),
         LCTL(KC_SLSH),       XXXXXXX,             XXXXXXX,             XXXXXXX,             RCS(KC_P),           _______,             XXXXXXX,             XXXXXXX,             XXXXXXX,             MO(KL_SYMNUM)
     ),
 
