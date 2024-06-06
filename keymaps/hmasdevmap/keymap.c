@@ -113,9 +113,9 @@ tap_dance_action_t tap_dance_actions[] = {
 
 /* combo start */
 const uint16_t PROGMEM KC_ER[] = {KC_E, KC_R, COMBO_END};
-const uint16_t PROGMEM KC_DF[] = {KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM KC_RT[] = {KC_R, KC_T, COMBO_END};
 const uint16_t PROGMEM KC_FG[] = {KC_F, KC_G, COMBO_END};
-const uint16_t PROGMEM KC_WD[] = {KC_W, KC_D, COMBO_END};
+const uint16_t PROGMEM KC_DF[] = {KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM KC_FB[] = {KC_F, KC_B, COMBO_END};
 const uint16_t PROGMEM KC_TG[] = {KC_T, KC_G, COMBO_END};
 
