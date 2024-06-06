@@ -152,6 +152,7 @@ const uint16_t PROGMEM KC_QWER[] = {LCTL_T(KC_Q), KC_W, KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM KC_QWDF[] = {LCTL_T(KC_Q), KC_W, KC_D, KC_F, COMBO_END};
 
 combo_t key_combos[] = {
+    // for brackets and quotes
     COMBO(KC_ER, TD(TD_BRACKET_L)),  // qwerty
     COMBO(KC_DF, TD(TD_BRACKET_L)),  // mod norman
     COMBO(KC_RT, TD(TD_BRACKET_R)),  // qwerty
@@ -159,34 +160,42 @@ combo_t key_combos[] = {
     COMBO(KC_FG, TD(TD_QUOTE)),  // qwerty
     COMBO(KC_TG, TD(TD_QUOTE)),  // mod norman
 
-    COMBO(KC_SX, KC_X),
+    // for R4 keys
+    COMBO(KC_SX, KC_X),  // qwerty / mod norman
     COMBO(KC_DC, KC_C),  // qwerty
     COMBO(KC_EC, KC_C),  // mod norman
 
+    // for left-top and right-top keys
     COMBO(KC_WE, LCTL_T(KC_Q)),  // qwerty
     COMBO(KC_WD, LCTL_T(KC_Q)),  // mod norman
     COMBO(KC_IO, LGUI_T(KC_P)),  // qwerty
     COMBO(KC_RP, LGUI_T(KC_SCLN)),  // mod norman
 
+    // for space/back-space/hyphen/period
     COMBO(KC_COMM_B, KC_MINS),  // qwerty
     COMBO(KC_COMM_K, KC_MINS),  // mod norman
     COMBO(KC_COMM_V, KC_DOT),  // qwerty / mod norman
     COMBO(KC_SPACE_N, KC_BSPC),  // qwerty
     COMBO(KC_SPACE_H, KC_BSPC),  // mod norman
     COMBO(KC_SPACE_M, LSFT_T(KC_SPACE)),  // qwerty / mod norman
+    COMBO(KC_ENT_L_BRACKET, KC_DEL),
+    COMBO(KC_ENT_R_BRACKET, KC_ENT),
+
+    // for symbols
     COMBO(KC_XC, KC_EQL),
     COMBO(KC_ZX, KC_INT3),
     COMBO(KC_QW, KC_ESC),
-    COMBO(KC_ENT_L_BRACKET, KC_DEL),
-    COMBO(KC_ENT_R_BRACKET, KC_ENT),
     COMBO(KC_HOME_LEFT, KC_BTN1),
 
-    COMBO(KC_TAB_COMM, MO(KL_SYMNUM)),
-    COMBO(KC_GRV_SPACE, MO(KL_SYMNUM)),
-
+    // for numpad
     COMBO(KC_ENT_KC_0, KC_BSPC),
     COMBO(KC_ENT_KC_1, LSFT(KC_ENT)),
 
+    // for layer change
+    COMBO(KC_TAB_COMM, MO(KL_SYMNUM)),
+    COMBO(KC_GRV_SPACE, MO(KL_SYMNUM)),
+
+    // for default layer change
     COMBO(KC_QWER, DF(KL_NORMAN)),     // qwerty
     COMBO(KC_QWDF, DF(KL_QWERTY)),     // mod norman
 };
