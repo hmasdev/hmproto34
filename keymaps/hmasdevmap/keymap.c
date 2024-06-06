@@ -112,8 +112,8 @@ tap_dance_action_t tap_dance_actions[] = {
 
 
 /* combo start */
-const uint16_t PROGMEM KC_WE[] = {KC_W, KC_E, COMBO_END};
-const uint16_t PROGMEM KC_RT[] = {KC_R, KC_T, COMBO_END};
+const uint16_t PROGMEM KC_ER[] = {KC_E, KC_R, COMBO_END};
+const uint16_t PROGMEM KC_DF[] = {KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM KC_FG[] = {KC_F, KC_G, COMBO_END};
 const uint16_t PROGMEM KC_WD[] = {KC_W, KC_D, COMBO_END};
 const uint16_t PROGMEM KC_FB[] = {KC_F, KC_B, COMBO_END};
@@ -143,8 +143,8 @@ const uint16_t PROGMEM KC_QWER[] = {LCTL_T(KC_Q), KC_W, KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM KC_QWDF[] = {LCTL_T(KC_Q), KC_W, KC_D, KC_F, COMBO_END};
 
 combo_t key_combos[] = {
-    COMBO(KC_WE, TD(TD_BRACKET_L)),  // qwerty
-    COMBO(KC_WD, TD(TD_BRACKET_L)),  // mod norman
+    COMBO(KC_ER, TD(TD_BRACKET_L)),  // qwerty
+    COMBO(KC_DF, TD(TD_BRACKET_L)),  // mod norman
     COMBO(KC_RT, TD(TD_BRACKET_R)),  // qwerty
     COMBO(KC_FB, TD(TD_BRACKET_R)),  // mod norman
     COMBO(KC_FG, TD(TD_QUOTE)),  // qwerty
