@@ -1,0 +1,29 @@
+name: Upload Assets On Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    uses: ./.github/workflows/compile-firmware-workflow-call.yaml
+    with:
+      git-ref: ${{ github.ref }}
+      keymap: "default"
+  up:
+    needs: [build]
+    if: ${{ succdss() }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: hmproto34-default
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./hmproto34-default.zip
+          asset_name: hmproto34-default.zip
+          asset_content_type: application/octet-stream
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
