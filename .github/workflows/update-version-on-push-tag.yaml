@@ -39,7 +39,7 @@ jobs:
           git commit -m "Update version to $tag"
           git push origin $branch
           git tag -d $tag
-          git push -delete origin $tag
+          git push --delete origin $tag
           gh pr create  \
               --title "Update version to $tag" \
               --body "Update version to $tag" \
