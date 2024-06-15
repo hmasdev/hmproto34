@@ -12,18 +12,19 @@ jobs:
       keymap: "default"
   up:
     needs: [build]
-    if: ${{ succdss() }}
+    if: ${{ success() }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v3
         with:
           name: hmproto34-default
+          path: artifacts
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./hmproto34-default.zip
-          asset_name: hmproto34-default.zip
+          asset_path: ./artifacts/hmproto34_default.hex
+          asset_name: hmproto34_default.hex
           asset_content_type: application/octet-stream
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
