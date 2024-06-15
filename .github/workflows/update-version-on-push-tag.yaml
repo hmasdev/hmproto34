@@ -1,4 +1,4 @@
-name: On Push Tags
+name: Update Version On Push Tags
 
 on:
   push:

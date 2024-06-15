@@ -13,6 +13,18 @@ on:
         required: false
         default: "default"
         description: "Keymap name. Default is default."
+  workflow_call:
+    inputs:
+      git-ref:
+        required: false
+        type: string
+        default: "main"
+        description: "Git ref to checkout. Default is main."
+      keymap:
+        type: string
+        required: false
+        default: "default"
+        description: "Keymap name. Default is default."
 
 jobs:
   compile:
