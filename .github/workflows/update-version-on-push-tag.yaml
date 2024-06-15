@@ -11,7 +11,7 @@ jobs:
   validate-version:
     uses: ./.github/workflows/validate-version-workflow-call.yaml
     with:
-      git-ref: ${{ github.ref }}
+      tag: ${{ github.ref }}
   update-version:
     needs: [validate-version]
     if: ${{ failure() }}
