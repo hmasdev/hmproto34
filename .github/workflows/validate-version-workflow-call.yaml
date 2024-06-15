@@ -1,0 +1,29 @@
+name: Validate Version
+
+# TODO: restrict inputs.tag to be a tag
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        required: true
+        type: string
+  workflow_call:
+    inputs:
+      tag:
+        required: true
+        type: string
+
+jobs:
+  validate_version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
+      - name: Check Version
+        run: |
+          # Check if the tag is the same as the version in info.json
+          export tag=$(echo "${{ inputs.tag }}" | cut -d / -f 3)
+          echo "extracted tag: $tag"
+          grep "\"device_version\": \"$tag\"" info.json || (echo "Version mismatch" && exit 1)

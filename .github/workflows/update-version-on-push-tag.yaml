@@ -1,0 +1,52 @@
+name: On Push Tags
+
+on:
+  push:
+    tags:
+      - "*.*.*"
+      - "!*.*.*a*"
+      - "!*.*.*b*"
+
+jobs:
+  validate-version:
+    uses: ./.github/workflows/validate-version-workflow-call.yaml
+    with:
+      git-ref: ${{ github.ref }}
+  update-version:
+    needs: [validate-version]
+    if: ${{ failure() }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update Version
+        run: |
+          export tag=$(git describe --tags --abbrev=0)
+          export branch="bot/update-version-to-$tag"
+
+          # Update the version in info.json
+          git checkout -b $branch
+          echo "extracted tag: $tag"
+          sed -i "s/\"device_version\":\s*\".*\"/\"device_version\": \"$tag\"/" info.json
+          git diff --exit-code info.json && exit 0 || git add info.json
+
+          # Output the tag and branch
+          echo "tag=$tag" >> "$GITHUB_ENV"
+          echo "branch=$branch" >> "$GITHUB_ENV"
+
+          # Commit and push the changes
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update version to $tag"
+          git push origin $branch
+          git tag -d $tag
+          git push -delete origin $tag
+          gh pr create  \
+              --title "Update version to $tag" \
+              --body "Update version to $tag" \
+              --base main \
+              --head $branch \
+              --assignee hmasdev \
+              --reviewer hmasdev \
+              --label "bot"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
