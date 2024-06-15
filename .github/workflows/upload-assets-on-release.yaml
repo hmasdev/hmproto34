@@ -18,11 +18,15 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: hmproto34-default
+      - name: Unzip Release Asset
+        run: |
+          unzip /home/runner/work/hmproto34/hmproto34/hmproto34-default.zip
+          ls -la /home/runner/work/hmproto34/hmproto34/hmproto34-default
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: /home/runner/work/hmproto34/hmproto34/hmproto34-default.hex # TODO: change this path
+          asset_path: /home/runner/work/hmproto34/hmproto34/hmproto34-default/hmproto34-default.hex # TODO: change this path
           asset_name: hmproto34-default.hex
           asset_content_type: application/octet-stream
         env:
