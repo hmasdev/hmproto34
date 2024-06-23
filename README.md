@@ -6,9 +6,17 @@
 
 hmproto34 is a hand-fitted keyboard with 34 keys.
 
-![hmproto34](https://pbs.twimg.com/media/GOMeMuba8AA7y6z?format=jpg&name=small)
+![hmproto34](./pics/hmproto34.jpg)
 
-## How to Use
+## How to Use Firmware
+
+The most simple way to use hmproto34 is to flash the pre-built firmware to your keyboard.
+
+Download the latest firmware from [Releases](https://github.com/hmasdev/hmproto34/releases) and follow the instructions in [How to Flash Firmware](#how-to-flash-firmware).
+
+The next 2 subsections explain how to build firmware and flash it to your keyboard.
+
+If you want to know how to build the keyboard, see [How to Build Keyboard](#how-to-build-keyboard).
 
 ### How to Build Firmware
 
@@ -58,6 +66,46 @@ OK. Now, you can use your hmproto34 keyboard! Try typing something!
 
 3. [Flash firmware again](#how-to-flash-firmware);
 
+## How to Build Keyboard
+
+### Required Components
+
+| Component | Quantity | Note |
+| --- | --- | --- |
+| PCB | 2 | [Gerber files](./pcb) |
+| Top Plate | 2 | [Gerber files](./top_plate) |
+| Pro Micro | 2 | |
+| TRRS Jack | 2 | |
+| TRRS Cable | 1 | 3 or 4 poles |
+| Tactile Switch | 2 | Reset Switch |
+| Kalih PCB Socket | 34 | For MX Compatible Switch |
+| MX Compatible Switch | 34 | |
+| KeyCap | 30 (1u), 4 (1u-2u) | |
+| Micro USB Cable | 1 | the type of USB depends on the Pro Micro |
+
+### Assembly Steps
+
+1. Solder PCB Sockets to the bottom of PCBs;
+2. Attach diodes to the top of PCBs and solder them on the bottom of PCBs;
+3. Attach tactile switches and TRRS jacks to the top of PCBs and solder them on the bottom of PCBs;
+4. Attach Pro Micros to the top of PCBs;
+
+   ![Top of PCBs](./pics/top-of-pcb.jpg)
+
+   ![Bottom of PCBs](./pics/bottom-of-pcb.jpg)
+
+5. Attach key switches to the top plate;
+
+   ![Attach Key Switches to Top Plate](./pics/attach-keyswitches-to-top-plate.jpg)
+
+6. Joint the top plate and PCBs;
+7. Build and flash firmware;
+   - See [How to Build Firmware](#how-to-build-firmware) and [How to Flash Firmware](#how-to-flash-firmware) for more information.
+8. Connect the left and right keyboards with a TRRS cable;
+9. Enjoy typing!
+
+
+
 ## PCB and Top Plate
 
 ### PCB
@@ -71,6 +119,39 @@ Gerber files are located in [./top_plate](./top_plate) directory.
 You can order PCBs from PCB manufacturers like JLCPCB etc.
 
 See [./top_plate/hmproto34-Edge_Cuts.svg](./top_plate/hmproto34-Edge_Cuts.svg) for the shape of the top plate.
+
+## How to Contribute
+
+1. Fork the repository: [https://github.com/hmasdev/hmproto34](https://github.com/hmasdev/hmproto34)
+2. Clone the repository
+
+   ```bash
+   git clone https://github.com/{YOURE_NAME}/hmproto34.git
+   cd hmproto34
+   ```
+
+3. Checkout your working branch
+
+   ```bash
+   git checkout -b your-working-branch
+   ```
+
+4. Make your changes
+
+5. Commit your changes
+
+   ```bash
+   git add .
+   git commit -m "Your commit message"
+   ```
+
+6. Push your changes
+
+   ```bash
+   git push origin your-working-branch
+   ```
+
+7. Create a pull request: [https://github.com/hmasdev/hmproto34/compare](https://github.com/hmasdev/hmproto34/compare)
 
 ## LICENSE
 
