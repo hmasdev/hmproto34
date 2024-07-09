@@ -20,10 +20,9 @@ jobs:
       - name: List Keymaps
         id: list-keymaps
         run: |
-          python -c "import os,json; print('matrix='+json.dumps({'include': [{'keymap': d} for d in os.listdir('keymaps') if os.path.isdir(os.path.join('keymaps', d))]}))" >> $GITHUB_ENV
+          python -c "import os,json; print('matrix='+json.dumps({'include': [{'keymap': d} for d in os.listdir('keymaps') if os.path.isdir(os.path.join('keymaps', d))]}))" >> $GITHUB_OUTPUT
   compile:
     needs: list-keymaps
-    runs-on: ubuntu-latest
     strategy:
       matrix: ${{fromJson(needs.list-keymaps.outputs.matrix)}}
     uses: ./.github/workflows/compile-firmware-workflow-call.yaml
