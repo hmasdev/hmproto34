@@ -130,7 +130,7 @@ const uint16_t PROGMEM KC_YN[] = {KC_Y, KC_N, COMBO_END};
 const uint16_t PROGMEM KC_HJ[] = {KC_H, KC_J, COMBO_END};
 const uint16_t PROGMEM KC_TG[] = {KC_T, KC_G, COMBO_END};
 const uint16_t PROGMEM KC_FG[] = {KC_F, KC_G, COMBO_END};
-const uint16_t PROGMEM KC_HOME_LEFT[] = {KC_HOME, KC_LEFT, COMBO_END};
+const uint16_t PROGMEM KC_HOME_LEFT_[] = {KC_HOME, KC_LEFT, COMBO_END};
 
 const uint16_t PROGMEM KC_ER[] = {KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM KC_RT[] = {KC_R, KC_T, COMBO_END};
@@ -189,7 +189,7 @@ combo_t key_combos[] = {
     COMBO(KC_HJ, KC_Y),  // qwerty
     COMBO(KC_TG, KC_B),  // mod norman
     COMBO(KC_FG, KC_T),  // qwerty
-    COMBO(KC_HOME_LEFT, CKC_WO),
+    COMBO(KC_HOME_LEFT_, CKC_WO),
 
     // for brackets and quotes
     COMBO(KC_WE, TD(TD_BRACKET_L)),  // qwerty
