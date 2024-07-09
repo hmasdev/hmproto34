@@ -27,7 +27,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix: ${{fromJson(needs.list-keymaps.outputs.matrix)}}
-    uses: ./.github/workflows/compile-firmware-workflow-call.yaml
-    with:
-      git-ref: ${{ github.ref }}
-      keymap: ${{ matrix.keymap }}
+    steps:
+      - name: Compile Firmware
+        uses: ./.github/workflows/compile-firmware-workflow-call.yaml
+        with:
+          git-ref: ${{ github.ref }}
+          keymap: ${{ matrix.keymap }}
