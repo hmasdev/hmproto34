@@ -3,6 +3,7 @@
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/hmasdev/hmproto34?sort=semver)
 ![GitHub Liecense](https://img.shields.io/github/license/hmasdev/hmproto34)
 ![GitHub last commit](https://img.shields.io/github/last-commit/hmasdev/hmproto34)
+![Scheduled Build](https://github.com/hmasdev/hmproto34/actions/workflows/compile-firmware-on-schedule.yaml/badge.svg)
 
 hmproto34 is a hand-fitted keyboard with 34 keys.
 
@@ -103,8 +104,6 @@ OK. Now, you can use your hmproto34 keyboard! Try typing something!
    - See [How to Build Firmware](#how-to-build-firmware) and [How to Flash Firmware](#how-to-flash-firmware) for more information.
 8. Connect the left and right keyboards with a TRRS cable;
 9. Enjoy typing!
-
-
 
 ## PCB and Top Plate
 
