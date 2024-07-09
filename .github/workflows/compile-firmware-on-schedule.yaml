@@ -1,0 +1,32 @@
+name: Scheduled Compile
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 6"
+
+jobs:
+  list-keymaps:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.list-keymaps.outputs.matrix }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: List Keymaps
+        id: list-keymaps
+        run: |
+          python -c "import os,json; print('matrix='+json.dumps({'include': [{'keymap': d} for d in os.listdir('keymaps') if os.path.isdir(os.path.join('keymaps', d))]}))" >> $GITHUB_ENV
+  compile:
+    needs: list-keymaps
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{fromJson(needs.list-keymaps.outputs.matrix)}}
+    uses: ./.github/workflows/compile-firmware-workflow-call.yaml
+    with:
+      git-ref: ${{ github.ref }}
+      keymap: ${{ matrix.keymap }}
