@@ -35,7 +35,14 @@ enum cutom_keycodes {
     CKC_ZA,
     CKC_L_ARROW,
     CKC_R_ARROW,
-    /* PYTHON COMMENT */
+    /* PYTHON */
+    CKC_PYTHON,
+    CKC_PYTHONM,
+    CKC_PIP_INSTALL,
+    CKC_PIP_INSTALL_R,
+    CKC_PYTEST,
+    CKC_FLAKE8,
+    CKC_MYPY,
     CKC_PY_NOQA,
     CKC_PY_TYPE_IGNORE,
     /* SAFE RANGE */
@@ -63,7 +70,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CKC_ZA: if (record->event.pressed) { SEND_STRING("za"); } return false; break;
         case CKC_L_ARROW: if (record->event.pressed) { SEND_STRING("<- "); } return false; break;
         case CKC_R_ARROW: if (record->event.pressed) { SEND_STRING("-> "); } return false; break;
-        // PYTHON COMMENT
+        // PYTHON
+        case CKC_PYTHON: if (record->event.pressed) { SEND_STRING("python "); } return false; break;
+        case CKC_PYTHONM: if (record->event.pressed) { SEND_STRING("python -m "); } return false; break;
+        case CKC_PIP_INSTALL: if (record->event.pressed) { SEND_STRING("pip install "); } return false; break;
+        case CKC_PIP_INSTALL_R: if (record->event.pressed) { SEND_STRING("pip install -r requirements.txt"); } return false; break;
+        case CKC_PYTEST: if (record->event.pressed) { SEND_STRING("pytest "); } return false; break;
+        case CKC_FLAKE8: if (record->event.pressed) { SEND_STRING("flake8 "); } return false; break;
+        case CKC_MYPY: if (record->event.pressed) { SEND_STRING("mypy "); } return false; break;
         case CKC_PY_NOQA: if (record->event.pressed) { SEND_STRING("  # noqa"); } return false; break;
         case CKC_PY_TYPE_IGNORE: if (record->event.pressed) { SEND_STRING("  # type' ignore"); } return false; break;
         default: return true; break;
@@ -114,22 +128,20 @@ tap_dance_action_t tap_dance_actions[] = {
 /* combo start */
 const uint16_t PROGMEM KC_YN[] = {KC_Y, KC_N, COMBO_END};
 const uint16_t PROGMEM KC_HJ[] = {KC_H, KC_J, COMBO_END};
+const uint16_t PROGMEM KC_TG[] = {KC_T, KC_G, COMBO_END};
+const uint16_t PROGMEM KC_FG[] = {KC_F, KC_G, COMBO_END};
+const uint16_t PROGMEM KC_HOME_LEFT[] = {KC_HOME, KC_LEFT, COMBO_END};
 
 const uint16_t PROGMEM KC_ER[] = {KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM KC_RT[] = {KC_R, KC_T, COMBO_END};
-const uint16_t PROGMEM KC_FG[] = {KC_F, KC_G, COMBO_END};
 const uint16_t PROGMEM KC_DF[] = {KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM KC_FB[] = {KC_F, KC_B, COMBO_END};
-const uint16_t PROGMEM KC_TG[] = {KC_T, KC_G, COMBO_END};
+const uint16_t PROGMEM KC_WE[] = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM KC_WD[] = {KC_W, KC_D, COMBO_END};
 
 const uint16_t PROGMEM KC_SX[] = {KC_S, KC_X, COMBO_END};
 const uint16_t PROGMEM KC_DC[] = {KC_D, KC_C, COMBO_END};
 const uint16_t PROGMEM KC_EC[] = {KC_E, KC_C, COMBO_END};
-
-const uint16_t PROGMEM KC_WE[] = {KC_W, KC_E, COMBO_END};
-const uint16_t PROGMEM KC_WD[] = {KC_W, KC_D, COMBO_END};
-const uint16_t PROGMEM KC_IO[] = {KC_I, KC_O, COMBO_END};
-const uint16_t PROGMEM KC_RP[] = {KC_R, KC_P, COMBO_END};
 
 const uint16_t PROGMEM KC_COMM_K[] = {LT(KL_OPE, KC_COMM), KC_K, COMBO_END};
 const uint16_t PROGMEM KC_COMM_B [] = {LT(KL_OPE, KC_COMM), KC_B, COMBO_END};
@@ -154,29 +166,43 @@ const uint16_t PROGMEM KC_ENT_KC_1[] = {KC_ENT, KC_1, COMBO_END};
 const uint16_t PROGMEM KC_QWER[] = {LCTL_T(KC_Q), KC_W, KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM KC_QWDF[] = {LCTL_T(KC_Q), KC_W, KC_D, KC_F, COMBO_END};
 
+const uint16_t PROGMEM KC_F2_F3[] = {KC_F2, KC_F3, COMBO_END};
+const uint16_t PROGMEM KC_F1_F2_F3[] = {KC_F1, KC_F2, KC_F3, COMBO_END};
+const uint16_t PROGMEM KC_F2_F3_F4[] = {KC_F2, KC_F3, KC_F4, COMBO_END};
+const uint16_t PROGMEM KC_F1_F2_F3_F4[] = {KC_F1, KC_F2, KC_F3, KC_F4, COMBO_END};
+const uint16_t PROGMEM KC_F3_F4[] = {KC_F3, KC_F4, COMBO_END};
+const uint16_t PROGMEM KC_F4_F5[] = {KC_F3, KC_F4, COMBO_END};
+const uint16_t PROGMEM KC_F3_F4_F5[] = {KC_F3, KC_F4, KC_5, COMBO_END};
+
 combo_t key_combos[] = {
-    // for YN and HJ
+    // python
+    COMBO(KC_F2_F3, CKC_PYTHON),
+    COMBO(KC_F2_F3_F4, CKC_PYTHONM),
+    COMBO(KC_F3_F4, CKC_PY_NOQA),
+    COMBO(KC_F4_F5, CKC_PY_TYPE_IGNORE),
+    COMBO(KC_F1_F2_F3, CKC_PYTEST),
+    COMBO(KC_F1_F2_F3_F4, CKC_PIP_INSTALL),
+    COMBO(KC_F3_F4_F5, CKC_PIP_INSTALL_R),
+
+    // To reduce the load on the index finger
     COMBO(KC_YN, KC_J),  // mod norman
     COMBO(KC_HJ, KC_Y),  // qwerty
+    COMBO(KC_TG, KC_B),  // mod norman
+    COMBO(KC_FG, KC_T),  // qwerty
+    COMBO(KC_HOME_LEFT, CKC_WO),
 
     // for brackets and quotes
-    COMBO(KC_ER, TD(TD_BRACKET_L)),  // qwerty
-    COMBO(KC_DF, TD(TD_BRACKET_L)),  // mod norman
-    COMBO(KC_RT, TD(TD_BRACKET_R)),  // qwerty
-    COMBO(KC_FB, TD(TD_BRACKET_R)),  // mod norman
-    COMBO(KC_FG, TD(TD_QUOTE)),  // qwerty
-    COMBO(KC_TG, TD(TD_QUOTE)),  // mod norman
+    COMBO(KC_WE, TD(TD_BRACKET_L)),  // qwerty
+    COMBO(KC_WD, TD(TD_BRACKET_L)),  // mod norman
+    COMBO(KC_ER, TD(TD_BRACKET_R)),  // qwerty
+    COMBO(KC_DF, TD(TD_BRACKET_R)),  // mod norman
+    COMBO(KC_RT, TD(TD_QUOTE)),  // qwerty
+    COMBO(KC_FB, TD(TD_QUOTE)),  // mod norman
 
     // for R4 keys
     COMBO(KC_SX, KC_X),  // qwerty / mod norman
     COMBO(KC_DC, KC_C),  // qwerty
     COMBO(KC_EC, KC_C),  // mod norman
-
-    // for left-top and right-top keys
-    COMBO(KC_WE, LCTL_T(KC_Q)),  // qwerty
-    COMBO(KC_WD, LCTL_T(KC_Q)),  // mod norman
-    COMBO(KC_IO, LGUI_T(KC_P)),  // qwerty
-    COMBO(KC_RP, LGUI_T(KC_SCLN)),  // mod norman
 
     // for space/back-space/hyphen/period
     COMBO(KC_COMM_B, KC_MINS),  // qwerty
@@ -238,7 +264,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [KL_FUN] = LAYOUT(
         LCTL(KC_0),          LCTL(KC_1),          LCTL(KC_2),          LCTL(KC_3),          LCTL(KC_4),          CKC_NYU,             CKC_RYA,             CKC_RYU,             CKC_RYO,             LGUI_T(KC_F10),
         KC_F1,               KC_F2,               KC_F3,               KC_F4,               KC_F5,               KC_F6,               KC_F7,               KC_F8,               KC_F9,               KC_F11,
-        RCS(KC_E),           CKC_PY_NOQA,         CKC_PY_TYPE_IGNORE,  RCS(KC_EQL),         RCS(KC_LBRC),        LCA(KC_DOWN),        LCA(KC_UP),          LCA(KC_LEFT),        LCA(KC_RGHT),        LCTL_T(KC_F12),
+        RCS(KC_E),           CKC_FLAKE8,          CKC_MYPY,            RCS(KC_EQL),         RCS(KC_LBRC),        LCA(KC_DOWN),        LCA(KC_UP),          LCA(KC_LEFT),        LCA(KC_RGHT),        LCTL_T(KC_F12),
         LCTL(KC_SLSH),       XXXXXXX,             XXXXXXX,             XXXXXXX,             RCS(KC_P),           _______,             XXXXXXX,             XXXXXXX,             XXXXXXX,             MO(KL_SYMNUM)
     ),
 
