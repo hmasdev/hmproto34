@@ -112,21 +112,22 @@ tap_dance_action_t tap_dance_actions[] = {
 
 
 /* combo start */
+const uint16_t PROGMEM KC_YN[] = {KC_Y, KC_N, COMBO_END};
+const uint16_t PROGMEM KC_HJ[] = {KC_H, KC_J, COMBO_END};
+const uint16_t PROGMEM KC_TG[] = {KC_T, KC_G, COMBO_END};
+const uint16_t PROGMEM KC_FG[] = {KC_F, KC_G, COMBO_END};
+const uint16_t PROGMEM KC_HOME_LEFT[] = {KC_HOME, KC_LEFT, COMBO_END};
+
 const uint16_t PROGMEM KC_ER[] = {KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM KC_RT[] = {KC_R, KC_T, COMBO_END};
-const uint16_t PROGMEM KC_FG[] = {KC_F, KC_G, COMBO_END};
 const uint16_t PROGMEM KC_DF[] = {KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM KC_FB[] = {KC_F, KC_B, COMBO_END};
-const uint16_t PROGMEM KC_TG[] = {KC_T, KC_G, COMBO_END};
+const uint16_t PROGMEM KC_WE[] = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM KC_WD[] = {KC_W, KC_D, COMBO_END};
 
 const uint16_t PROGMEM KC_SX[] = {KC_S, KC_X, COMBO_END};
 const uint16_t PROGMEM KC_DC[] = {KC_D, KC_C, COMBO_END};
 const uint16_t PROGMEM KC_EC[] = {KC_E, KC_C, COMBO_END};
-
-const uint16_t PROGMEM KC_WE[] = {KC_W, KC_E, COMBO_END};
-const uint16_t PROGMEM KC_WD[] = {KC_W, KC_D, COMBO_END};
-const uint16_t PROGMEM KC_IO[] = {KC_I, KC_O, COMBO_END};
-const uint16_t PROGMEM KC_RP[] = {KC_R, KC_P, COMBO_END};
 
 const uint16_t PROGMEM KC_COMM_K[] = {LT(KL_OPE, KC_COMM), KC_K, COMBO_END};
 const uint16_t PROGMEM KC_COMM_B [] = {LT(KL_OPE, KC_COMM), KC_B, COMBO_END};
@@ -152,24 +153,25 @@ const uint16_t PROGMEM KC_QWER[] = {LCTL_T(KC_Q), KC_W, KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM KC_QWDF[] = {LCTL_T(KC_Q), KC_W, KC_D, KC_F, COMBO_END};
 
 combo_t key_combos[] = {
+    // To reduce the load on the index finger
+    COMBO(KC_YN, KC_J),  // mod norman
+    COMBO(KC_HJ, KC_Y),  // qwerty
+    COMBO(KC_TG, KC_B),  // mod norman
+    COMBO(KC_FG, KC_T),  // qwerty
+    COMBO(KC_HOME_LEFT, CKC_WO),
+
     // for brackets and quotes
-    COMBO(KC_ER, TD(TD_BRACKET_L)),  // qwerty
-    COMBO(KC_DF, TD(TD_BRACKET_L)),  // mod norman
-    COMBO(KC_RT, TD(TD_BRACKET_R)),  // qwerty
-    COMBO(KC_FB, TD(TD_BRACKET_R)),  // mod norman
-    COMBO(KC_FG, TD(TD_QUOTE)),  // qwerty
-    COMBO(KC_TG, TD(TD_QUOTE)),  // mod norman
+    COMBO(KC_WE, TD(TD_BRACKET_L)),  // qwerty
+    COMBO(KC_WD, TD(TD_BRACKET_L)),  // mod norman
+    COMBO(KC_ER, TD(TD_BRACKET_R)),  // qwerty
+    COMBO(KC_DF, TD(TD_BRACKET_R)),  // mod norman
+    COMBO(KC_RT, TD(TD_QUOTE)),  // qwerty
+    COMBO(KC_FB, TD(TD_QUOTE)),  // mod norman
 
     // for R4 keys
     COMBO(KC_SX, KC_X),  // qwerty / mod norman
     COMBO(KC_DC, KC_C),  // qwerty
     COMBO(KC_EC, KC_C),  // mod norman
-
-    // for left-top and right-top keys
-    COMBO(KC_WE, LCTL_T(KC_Q)),  // qwerty
-    COMBO(KC_WD, LCTL_T(KC_Q)),  // mod norman
-    COMBO(KC_IO, LGUI_T(KC_P)),  // qwerty
-    COMBO(KC_RP, LGUI_T(KC_SCLN)),  // mod norman
 
     // for space/back-space/hyphen/period
     COMBO(KC_COMM_B, KC_MINS),  // qwerty
