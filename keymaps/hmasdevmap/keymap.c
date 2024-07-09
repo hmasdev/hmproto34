@@ -35,7 +35,14 @@ enum cutom_keycodes {
     CKC_ZA,
     CKC_L_ARROW,
     CKC_R_ARROW,
-    /* PYTHON COMMENT */
+    /* PYTHON */
+    CKC_PYTHON,
+    CKC_PYTHONM,
+    CKC_PIP_INSTALL,
+    CKC_PIP_INSTALL_R,
+    CKC_PYTEST,
+    CKC_FLAKE8,
+    CKC_MYPY,
     CKC_PY_NOQA,
     CKC_PY_TYPE_IGNORE,
     /* SAFE RANGE */
@@ -63,7 +70,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CKC_ZA: if (record->event.pressed) { SEND_STRING("za"); } return false; break;
         case CKC_L_ARROW: if (record->event.pressed) { SEND_STRING("<- "); } return false; break;
         case CKC_R_ARROW: if (record->event.pressed) { SEND_STRING("-> "); } return false; break;
-        // PYTHON COMMENT
+        // PYTHON
+        case CKC_PYTHON: if (record->event.pressed) { SEND_STRING("python "); } return false; break;
+        case CKC_PYTHONM: if (record->event.pressed) { SEND_STRING("python -m "); } return false; break;
+        case CKC_PIP_INSTALL: if (record->event.pressed) { SEND_STRING("pip install "); } return false; break;
+        case CKC_PIP_INSTALL_R: if (record->event.pressed) { SEND_STRING("pip install -r requirements.txt"); } return false; break;
+        case CKC_PYTEST: if (record->event.pressed) { SEND_STRING("pytest "); } return false; break;
+        case CKC_FLAKE8: if (record->event.pressed) { SEND_STRING("flake8 "); } return false; break;
+        case CKC_MYPY: if (record->event.pressed) { SEND_STRING("mypy "); } return false; break;
         case CKC_PY_NOQA: if (record->event.pressed) { SEND_STRING("  # noqa"); } return false; break;
         case CKC_PY_TYPE_IGNORE: if (record->event.pressed) { SEND_STRING("  # type' ignore"); } return false; break;
         default: return true; break;
@@ -152,7 +166,24 @@ const uint16_t PROGMEM KC_ENT_KC_1[] = {KC_ENT, KC_1, COMBO_END};
 const uint16_t PROGMEM KC_QWER[] = {LCTL_T(KC_Q), KC_W, KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM KC_QWDF[] = {LCTL_T(KC_Q), KC_W, KC_D, KC_F, COMBO_END};
 
+const uint16_t PROGMEM KC_F2_F3[] = {KC_F2, KC_F3, COMBO_END};
+const uint16_t PROGMEM KC_F1_F2_F3[] = {KC_F1, KC_F2, KC_F3, COMBO_END};
+const uint16_t PROGMEM KC_F2_F3_F4[] = {KC_F2, KC_F3, KC_F4, COMBO_END};
+const uint16_t PROGMEM KC_F1_F2_F3_F4[] = {KC_F1, KC_F2, KC_F3, KC_F4, COMBO_END};
+const uint16_t PROGMEM KC_F3_F4[] = {KC_F3, KC_F4, COMBO_END};
+const uint16_t PROGMEM KC_F4_F5[] = {KC_F3, KC_F4, COMBO_END};
+const uint16_t PROGMEM KC_F3_F4_F5[] = {KC_F3, KC_F4, KC_5, COMBO_END};
+
 combo_t key_combos[] = {
+    // python
+    COMBO(KC_F2_F3, CKC_PYTHON),
+    COMBO(KC_F2_F3_F4, CKC_PYTHONM),
+    COMBO(KC_F3_F4, CKC_PY_NOQA),
+    COMBO(KC_F4_F5, CKC_PY_TYPE_IGNORE),
+    COMBO(KC_F1_F2_F3, CKC_PYTEST),
+    COMBO(KC_F1_F2_F3_F4, CKC_PIP_INSTALL),
+    COMBO(KC_F3_F4_F5, CKC_PIP_INSTALL_R),
+
     // To reduce the load on the index finger
     COMBO(KC_YN, KC_J),  // mod norman
     COMBO(KC_HJ, KC_Y),  // qwerty
@@ -233,7 +264,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [KL_FUN] = LAYOUT(
         LCTL(KC_0),          LCTL(KC_1),          LCTL(KC_2),          LCTL(KC_3),          LCTL(KC_4),          CKC_NYU,             CKC_RYA,             CKC_RYU,             CKC_RYO,             LGUI_T(KC_F10),
         KC_F1,               KC_F2,               KC_F3,               KC_F4,               KC_F5,               KC_F6,               KC_F7,               KC_F8,               KC_F9,               KC_F11,
-        RCS(KC_E),           CKC_PY_NOQA,         CKC_PY_TYPE_IGNORE,  RCS(KC_EQL),         RCS(KC_LBRC),        LCA(KC_DOWN),        LCA(KC_UP),          LCA(KC_LEFT),        LCA(KC_RGHT),        LCTL_T(KC_F12),
+        RCS(KC_E),           CKC_FLAKE8,          CKC_MYPY,            RCS(KC_EQL),         RCS(KC_LBRC),        LCA(KC_DOWN),        LCA(KC_UP),          LCA(KC_LEFT),        LCA(KC_RGHT),        LCTL_T(KC_F12),
         LCTL(KC_SLSH),       XXXXXXX,             XXXXXXX,             XXXXXXX,             RCS(KC_P),           _______,             XXXXXXX,             XXXXXXX,             XXXXXXX,             MO(KL_SYMNUM)
     ),
 
