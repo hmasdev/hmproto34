@@ -171,7 +171,7 @@ const uint16_t PROGMEM KC_F1_F2_F3[] = {KC_F1, KC_F2, KC_F3, COMBO_END};
 const uint16_t PROGMEM KC_F2_F3_F4[] = {KC_F2, KC_F3, KC_F4, COMBO_END};
 const uint16_t PROGMEM KC_F1_F2_F3_F4[] = {KC_F1, KC_F2, KC_F3, KC_F4, COMBO_END};
 const uint16_t PROGMEM KC_F3_F4[] = {KC_F3, KC_F4, COMBO_END};
-const uint16_t PROGMEM KC_F4_F5[] = {KC_F3, KC_F4, COMBO_END};
+const uint16_t PROGMEM KC_F4_F5[] = {KC_F4, KC_F5, COMBO_END};
 const uint16_t PROGMEM KC_F3_F4_F5[] = {KC_F3, KC_F4, KC_5, COMBO_END};
 
 combo_t key_combos[] = {
