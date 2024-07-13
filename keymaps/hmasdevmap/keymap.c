@@ -175,6 +175,8 @@ const uint16_t PROGMEM KC_F3_F4[] = {KC_F3, KC_F4, COMBO_END};
 const uint16_t PROGMEM KC_F4_F5[] = {KC_F4, KC_F5, COMBO_END};
 const uint16_t PROGMEM KC_F3_F4_F5[] = {KC_F3, KC_F4, KC_5, COMBO_END};
 
+const uint16_t PROGMEM KC_TD_QUOTE_CKC_NNN[] = {TD(TD_QUOTE), CKC_NNN, COMBO_END};
+
 combo_t key_combos[] = {
     // python
     COMBO(KC_F2_F3, CKC_PYTHON),
@@ -233,6 +235,9 @@ combo_t key_combos[] = {
     // for default layer change
     COMBO(KC_QWER, DF(KL_NORMAN)),     // qwerty
     COMBO(KC_QWDF, DF(KL_QWERTY)),     // mod norman
+
+    // combo for mouse
+    COMBO(KC_TD_QUOTE_CKC_NNN, KC_BTN1),
 };
 /* combo end */
 
