@@ -138,6 +138,8 @@ const uint16_t PROGMEM KC_DF[] = {KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM KC_FB[] = {KC_F, KC_B, COMBO_END};
 const uint16_t PROGMEM KC_WE[] = {KC_W, KC_E, COMBO_END};
 const uint16_t PROGMEM KC_WD[] = {KC_W, KC_D, COMBO_END};
+const uint16_t PROGMEM KC_WER[] = {KC_W, KC_E, KC_R, COMBO_END};
+const uint16_t PROGMEM KC_WDF[] = {KC_W, KC_D, KC_F, COMBO_END};
 
 const uint16_t PROGMEM KC_SX[] = {KC_S, KC_X, COMBO_END};
 const uint16_t PROGMEM KC_DC[] = {KC_D, KC_C, COMBO_END};
@@ -197,6 +199,8 @@ combo_t key_combos[] = {
     COMBO(KC_DF, TD(TD_BRACKET_R)),  // mod norman
     COMBO(KC_RT, TD(TD_QUOTE)),  // qwerty
     COMBO(KC_FB, TD(TD_QUOTE)),  // mod norman
+    COMBO(KC_WER, TD(TD_QUOTE)),  // qwerty
+    COMBO(KC_WDF, TD(TD_QUOTE)),  // mod norman
 
     // for R4 keys
     COMBO(KC_SX, KC_X),  // qwerty / mod norman
