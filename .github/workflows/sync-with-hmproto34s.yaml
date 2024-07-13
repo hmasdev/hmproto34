@@ -1,4 +1,4 @@
-name: syncronize with hmproto34
+name: syncronize with hmproto34s
 
 on:
   workflow_dispatch:

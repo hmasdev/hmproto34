@@ -4,6 +4,7 @@
 ![GitHub Liecense](https://img.shields.io/github/license/hmasdev/hmproto34)
 ![GitHub last commit](https://img.shields.io/github/last-commit/hmasdev/hmproto34)
 ![Scheduled Build](https://github.com/hmasdev/hmproto34/actions/workflows/compile-firmware-on-schedule.yaml/badge.svg)
+![Scheduled Sync With hmproto34s](https://github.com/hmasdev/hmproto34/actions/workflows/sync-with-hmproto34s.yaml/badge.svg)
 
 hmproto34 is a hand-fitted keyboard with 34 keys.
 
