@@ -208,8 +208,8 @@ combo_t key_combos[] = {
     COMBO(KC_EC, KC_C),  // mod norman
 
     // for space/back-space/hyphen/period
-    COMBO(KC_COMM_B, KC_MINS),  // qwerty
-    COMBO(KC_COMM_K, KC_MINS),  // mod norman
+    COMBO(KC_COMM_B, LT(KL_SYMNUM, KC_MINS)),  // qwerty
+    COMBO(KC_COMM_K, LT(KL_SYMNUM, KC_MINS)),  // mod norman
     COMBO(KC_COMM_V, KC_DOT),  // qwerty / mod norman
     COMBO(KC_SPACE_N, KC_BSPC),  // qwerty
     COMBO(KC_SPACE_H, KC_BSPC),  // mod norman
