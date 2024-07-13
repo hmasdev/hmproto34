@@ -1,0 +1,53 @@
+name: syncronize with hmproto34
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "5 17 * * *"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sync
+        run: |
+          chmod +x sync-with-hmproto34s.sh
+          ./sync-with-hmproto34s.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check for Changes
+        run: |
+          if [[ -n $(git status --porcelain keymaps) ]]; then
+            echo "keymaps has changed."
+            echo "changes_detected=true" >> "$GITHUB_ENV"
+          else
+            echo "keymaps has not changed."
+            echo "changes_detected=false" >> "$GITHUB_ENV"
+          fi
+      - name: Commit Changes
+        if: env.changes_detected == 'true'
+        run: |
+          git checkout -b sync-with-hmproto34s
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add keymaps
+          git status
+          git commit -m "Sync with hmproto34s"
+      - name: Push Changes
+        if: env.changes_detected == 'true'
+        run: |
+          git push -u origin sync-with-hmproto34s
+      - name: Create Pull Request
+        if: env.changes_detected == 'true'
+        run: |
+          gh pr create  \
+              --title "Sync with hmproto34s" \
+              --body "Sync with hmproto34s" \
+              --base main \
+              --head sync-with-hmproto34s \
+              --assignee hmasdev \
+              --reviewer hmasdev \
+              --label "bot"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
