@@ -15,7 +15,7 @@ jobs:
     if: ${{ success() }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4.1.7
         with:
           name: hmproto34-default
           path: artifacts
