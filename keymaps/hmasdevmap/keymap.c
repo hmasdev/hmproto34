@@ -5,8 +5,8 @@
 
 /* layer name */
 enum keymap_layer {
-    KL_QWERTY = 0,
-    KL_NORMAN,
+    KL_NORMAN = 0,
+    KL_QWERTY,
     KL_OPE,
     KL_FUN,
     KL_SYMNUM,
@@ -45,6 +45,7 @@ enum cutom_keycodes {
     CKC_MYPY,
     CKC_PY_NOQA,
     CKC_PY_TYPE_IGNORE,
+    CKC_PY_TYPE_IGNORE_NOQA,
     /* SAFE RANGE */
     HM_SAFE_RANGE,
 };
@@ -80,6 +81,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CKC_MYPY: if (record->event.pressed) { SEND_STRING("mypy "); } return false; break;
         case CKC_PY_NOQA: if (record->event.pressed) { SEND_STRING("  # noqa"); } return false; break;
         case CKC_PY_TYPE_IGNORE: if (record->event.pressed) { SEND_STRING("  # type' ignore"); } return false; break;
+        case CKC_PY_TYPE_IGNORE_NOQA: if (record->event.pressed) { SEND_STRING("  # type' ignore # noqa"); } return false; break;
         default: return true; break;
     };
     return true;
@@ -174,6 +176,9 @@ const uint16_t PROGMEM KC_F1_F2_F3_F4[] = {KC_F1, KC_F2, KC_F3, KC_F4, COMBO_END
 const uint16_t PROGMEM KC_F3_F4[] = {KC_F3, KC_F4, COMBO_END};
 const uint16_t PROGMEM KC_F4_F5[] = {KC_F4, KC_F5, COMBO_END};
 const uint16_t PROGMEM KC_F3_F4_F5[] = {KC_F3, KC_F4, KC_5, COMBO_END};
+const uint16_t PROGMEM KC_F6_F7[] = {KC_F6, KC_F7, COMBO_END};
+const uint16_t PROGMEM KC_F7_F8[] = {KC_F7, KC_F8, COMBO_END};
+const uint16_t PROGMEM KC_F6_F7_F8[] = {KC_F6, KC_F7, KC_F8, COMBO_END};
 
 const uint16_t PROGMEM KC_TD_QUOTE_CKC_NNN[] = {TD(TD_QUOTE), CKC_NNN, COMBO_END};
 
@@ -181,11 +186,14 @@ combo_t key_combos[] = {
     // python
     COMBO(KC_F2_F3, CKC_PYTHON),
     COMBO(KC_F2_F3_F4, CKC_PYTHONM),
-    COMBO(KC_F3_F4, CKC_PY_NOQA),
-    COMBO(KC_F4_F5, CKC_PY_TYPE_IGNORE),
     COMBO(KC_F1_F2_F3, CKC_PYTEST),
     COMBO(KC_F1_F2_F3_F4, CKC_PIP_INSTALL),
-    COMBO(KC_F3_F4_F5, CKC_PIP_INSTALL_R),
+    COMBO(KC_F3_F4, CKC_PY_NOQA),
+    COMBO(KC_F4_F5, CKC_PY_TYPE_IGNORE),
+    COMBO(KC_F3_F4_F5, CKC_PY_TYPE_IGNORE_NOQA),
+    COMBO(KC_F6_F7, CKC_PYTEST),
+    COMBO(KC_F7_F8, CKC_FLAKE8),
+    COMBO(KC_F6_F7_F8, CKC_MYPY),
 
     // To reduce the load on the index finger
     COMBO(KC_YN, KC_J),  // mod norman
@@ -212,7 +220,7 @@ combo_t key_combos[] = {
     // for space/back-space/hyphen/period
     COMBO(KC_COMM_B, LT(KL_SYMNUM, KC_MINS)),  // qwerty
     COMBO(KC_COMM_K, LT(KL_SYMNUM, KC_MINS)),  // mod norman
-    COMBO(KC_COMM_V, KC_DOT),  // qwerty / mod norman
+    COMBO(KC_COMM_V, LT(KL_SYMNUM, KC_DOT)),  // qwerty / mod norman
     COMBO(KC_SPACE_N, KC_BSPC),  // qwerty
     COMBO(KC_SPACE_H, KC_BSPC),  // mod norman
     COMBO(KC_SPACE_M, LSFT_T(KC_SPACE)),  // qwerty / mod norman
@@ -271,7 +279,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [KL_FUN] = LAYOUT(
         LCTL(KC_0),          LCTL(KC_1),          LCTL(KC_2),          LCTL(KC_3),          LCTL(KC_4),          CKC_NYU,             CKC_RYA,             CKC_RYU,             CKC_RYO,             LGUI_T(KC_F10),
         KC_F1,               KC_F2,               KC_F3,               KC_F4,               KC_F5,               KC_F6,               KC_F7,               KC_F8,               KC_F9,               KC_F11,
-        RCS(KC_E),           CKC_FLAKE8,          CKC_MYPY,            RCS(KC_EQL),         RCS(KC_LBRC),        LCA(KC_DOWN),        LCA(KC_UP),          LCA(KC_LEFT),        LCA(KC_RGHT),        LCTL_T(KC_F12),
+        RCS(KC_E),           LCAG(KC_N),          RCS(KC_I),           RCS(KC_EQL),         RCS(KC_LBRC),        LCA(KC_DOWN),        LCA(KC_UP),          LCA(KC_LEFT),        LCA(KC_RGHT),        LCTL_T(KC_F12),
         LCTL(KC_SLSH),       XXXXXXX,             XXXXXXX,             XXXXXXX,             RCS(KC_P),           _______,             XXXXXXX,             XXXXXXX,             XXXXXXX,             MO(KL_SYMNUM)
     ),
 
