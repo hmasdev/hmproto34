@@ -212,21 +212,21 @@ combo_t key_combos[] = {
     COMBO(KC_HOME_LEFT, CKC_WO),
 
     // for brackets and quotes
-    COMBO(KC_WE, LSFT(KC_RBRC)),  // qwerty {
+    // COMBO(KC_WE, LSFT(KC_RBRC)),  // qwerty {
     COMBO(KC_WD, LSFT(KC_RBRC)),  // mod norman {
-    COMBO(KC_ER, KC_RBRC),  // qwerty [
+    // COMBO(KC_ER, KC_RBRC),  // qwerty [
     COMBO(KC_DF, KC_RBRC),  // mod norman [
-    COMBO(KC_IU, KC_BSLS), // qwerty ]
+    // COMBO(KC_IU, KC_BSLS), // qwerty ]
     COMBO(KC_RU, KC_BSLS), // mod norman ]
-    COMBO(KC_IO, LSFT(KC_BSLS)), // qwerty }
+    // COMBO(KC_IO, LSFT(KC_BSLS)), // qwerty }
     COMBO(KC_RP, LSFT(KC_BSLS)), // mod norman }
-    COMBO(KC_RT, LSFT(KC_7)),  // qwerty '
+    // COMBO(KC_RT, LSFT(KC_7)),  // qwerty '
     COMBO(KC_FB, LSFT(KC_7)),  // mod norman '
-    COMBO(KC_WER, LSFT(KC_7)),  // qwerty '
+    // COMBO(KC_WER, LSFT(KC_7)),  // qwerty '
     COMBO(KC_WDF, LSFT(KC_7)),  // mod norman '
-    COMBO(KC_YU, LSFT(KC_2)),  // qwerty "
+    // COMBO(KC_YU, LSFT(KC_2)),  // qwerty "
     COMBO(KC_JU, LSFT(KC_2)),  // mod norman "
-    COMBO(KC_UIO, LSFT(KC_2)),  // qwerty "
+    // COMBO(KC_UIO, LSFT(KC_2)),  // qwerty "
     COMBO(KC_URP, LSFT(KC_2)),  // mod norman "
 
     // for R4 keys
