@@ -134,14 +134,23 @@ const uint16_t PROGMEM KC_TG[] = {KC_T, KC_G, COMBO_END};
 const uint16_t PROGMEM KC_FG[] = {KC_F, KC_G, COMBO_END};
 const uint16_t PROGMEM KC_HOME_LEFT[] = {KC_HOME, KC_LEFT, COMBO_END};
 
-const uint16_t PROGMEM KC_ER[] = {KC_E, KC_R, COMBO_END};
-const uint16_t PROGMEM KC_RT[] = {KC_R, KC_T, COMBO_END};
-const uint16_t PROGMEM KC_DF[] = {KC_D, KC_F, COMBO_END};
-const uint16_t PROGMEM KC_FB[] = {KC_F, KC_B, COMBO_END};
 const uint16_t PROGMEM KC_WE[] = {KC_W, KC_E, COMBO_END};
 const uint16_t PROGMEM KC_WD[] = {KC_W, KC_D, COMBO_END};
+const uint16_t PROGMEM KC_ER[] = {KC_E, KC_R, COMBO_END};
+const uint16_t PROGMEM KC_DF[] = {KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM KC_IU[] = {KC_I, KC_U, COMBO_END};
+const uint16_t PROGMEM KC_RU[] = {KC_R, KC_U, COMBO_END};
+const uint16_t PROGMEM KC_IO[] = {KC_I, KC_O, COMBO_END};
+const uint16_t PROGMEM KC_RP[] = {KC_R, KC_P, COMBO_END};
+
+const uint16_t PROGMEM KC_RT[] = {KC_R, KC_T, COMBO_END};
+const uint16_t PROGMEM KC_FB[] = {KC_F, KC_B, COMBO_END};
 const uint16_t PROGMEM KC_WER[] = {KC_W, KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM KC_WDF[] = {KC_W, KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM KC_YU[] = {KC_Y, KC_U, COMBO_END};
+const uint16_t PROGMEM KC_JU[] = {KC_J, KC_U, COMBO_END};
+const uint16_t PROGMEM KC_UIO[] = {KC_U, KC_I, KC_O, COMBO_END};
+const uint16_t PROGMEM KC_URP[] = {KC_U, KC_R, KC_P, COMBO_END};
 
 const uint16_t PROGMEM KC_SX[] = {KC_S, KC_X, COMBO_END};
 const uint16_t PROGMEM KC_DC[] = {KC_D, KC_C, COMBO_END};
@@ -203,14 +212,22 @@ combo_t key_combos[] = {
     COMBO(KC_HOME_LEFT, CKC_WO),
 
     // for brackets and quotes
-    COMBO(KC_WE, TD(TD_BRACKET_L)),  // qwerty
-    COMBO(KC_WD, TD(TD_BRACKET_L)),  // mod norman
-    COMBO(KC_ER, TD(TD_BRACKET_R)),  // qwerty
-    COMBO(KC_DF, TD(TD_BRACKET_R)),  // mod norman
-    COMBO(KC_RT, TD(TD_QUOTE)),  // qwerty
-    COMBO(KC_FB, TD(TD_QUOTE)),  // mod norman
-    COMBO(KC_WER, TD(TD_QUOTE)),  // qwerty
-    COMBO(KC_WDF, TD(TD_QUOTE)),  // mod norman
+    COMBO(KC_WE, LSFT(KC_RBRC)),  // qwerty {
+    COMBO(KC_WD, LSFT(KC_RBRC)),  // mod norman {
+    COMBO(KC_ER, KC_RBRC),  // qwerty [
+    COMBO(KC_DF, KC_RBRC),  // mod norman [
+    COMBO(KC_IU, KC_BSLS), // qwerty ]
+    COMBO(KC_RU, KC_BSLS), // mod norman ]
+    COMBO(KC_IO, LSFT(KC_BSLS)), // qwerty }
+    COMBO(KC_RP, LSFT(KC_BSLS)), // mod norman }
+    COMBO(KC_RT, LSFT(KC_7)),  // qwerty '
+    COMBO(KC_FB, LSFT(KC_7)),  // mod norman '
+    COMBO(KC_WER, LSFT(KC_7)),  // qwerty '
+    COMBO(KC_WDF, LSFT(KC_7)),  // mod norman '
+    COMBO(KC_YU, LSFT(KC_2)),  // qwerty "
+    COMBO(KC_JU, LSFT(KC_2)),  // mod norman "
+    COMBO(KC_UIO, LSFT(KC_2)),  // qwerty "
+    COMBO(KC_URP, LSFT(KC_2)),  // mod norman "
 
     // for R4 keys
     COMBO(KC_SX, KC_X),  // qwerty / mod norman
