@@ -20,10 +20,7 @@ enum cutom_keycodes {
     CKC_EXIT,
     CKC_FU,
     CKC_HA,
-    CKC_IR,
-    CKC_KI,
     CKC_NN,
-    CKC_NNN,
     CKC_NU,
     CKC_NYU,
     CKC_RO,
@@ -56,10 +53,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CKC_EXIT: if (record->event.pressed) { SEND_STRING("exit"); } return false; break;
         case CKC_FU: if (record->event.pressed) { SEND_STRING("fu"); } return false; break;
         case CKC_HA: if (record->event.pressed) { SEND_STRING("ha"); } return false; break;
-        case CKC_IR: if (record->event.pressed) { SEND_STRING("ir"); } return false; break;
-        case CKC_KI: if (record->event.pressed) { SEND_STRING("ki"); } return false; break;
         case CKC_NN: if (record->event.pressed) { SEND_STRING("nn"); } return false; break;
-        case CKC_NNN: if (record->event.pressed) { SEND_STRING("nnn"); } return false; break;
         case CKC_NU: if (record->event.pressed) { SEND_STRING("nu"); } return false; break;
         case CKC_NYU: if (record->event.pressed) { SEND_STRING("nyu"); } return false; break;
         case CKC_RO: if (record->event.pressed) { SEND_STRING("ro"); } return false; break;
@@ -193,7 +187,7 @@ const uint16_t PROGMEM KC_F6_F7[] = {KC_F6, KC_F7, COMBO_END};
 const uint16_t PROGMEM KC_F7_F8[] = {KC_F7, KC_F8, COMBO_END};
 const uint16_t PROGMEM KC_F6_F7_F8[] = {KC_F6, KC_F7, KC_F8, COMBO_END};
 
-const uint16_t PROGMEM KC_TD_QUOTE_CKC_NNN[] = {TD(TD_QUOTE), CKC_NNN, COMBO_END};
+const uint16_t PROGMEM KC_TD_QUOTE_CKC_NN[] = {TD(TD_QUOTE), CKC_NN, COMBO_END};
 
 combo_t key_combos[] = {
     // python
@@ -250,9 +244,6 @@ combo_t key_combos[] = {
     COMBO(KC_ENT_L_BRACKET, KC_DEL),
     COMBO(KC_ENT_R_BRACKET, KC_ENT),
 
-    // for symbols
-    COMBO(KC_XC, KC_EQL),
-    COMBO(KC_ZX, KC_INT3),
     COMBO(KC_QW, KC_ESC),
 
     // for numpad
@@ -268,7 +259,7 @@ combo_t key_combos[] = {
     COMBO(KC_QWDF, DF(KL_QWERTY)),     // mod norman
 
     // combo for mouse
-    COMBO(KC_TD_QUOTE_CKC_NNN, KC_BTN1),
+    COMBO(KC_TD_QUOTE_CKC_NN, KC_BTN1),
 };
 /* combo end */
 
@@ -278,7 +269,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [KL_QWERTY] = LAYOUT(
         LCTL_T(KC_Q),        KC_W,                KC_E,                KC_R,                KC_T,                KC_Y,                KC_U,                KC_I,                KC_O,                LGUI_T(KC_P),
         KC_A,                KC_S,                KC_D,                KC_F,                KC_G,                KC_H,                KC_J,                KC_K,                KC_L,                KC_SCLN,
-        KC_Z,                KC_X,                KC_C,                KC_V,                KC_B,                KC_N,                KC_M,                CKC_KI,              CKC_NN,              LCTL_T(KC_SLSH),
+        KC_Z,                KC_X,                KC_C,                KC_V,                KC_B,                KC_N,                KC_M,                KC_EQL,              KC_INT3,              LCTL_T(KC_SLSH),
         LSFT_T(KC_TAB),      XXXXXXX,             XXXXXXX,             XXXXXXX,             LT(KL_OPE, KC_COMM), LT(KL_FUN, KC_SPACE),XXXXXXX,             XXXXXXX,             XXXXXXX,             LALT_T(KC_GRV)
     ),
 
@@ -286,7 +277,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [KL_NORMAN] = LAYOUT(
         LCTL_T(KC_Q),        KC_W,                KC_D,                KC_F,                KC_B,                KC_J,                KC_U,                KC_R,                KC_P,                LGUI_T(KC_SCLN),
         KC_A,                KC_S,                KC_E,                KC_T,                KC_G,                KC_Y,                KC_N,                KC_I,                KC_O,                KC_L,
-        KC_Z,                KC_X,                KC_C,                KC_V,                KC_K,                KC_H,                KC_M,                CKC_IR,              CKC_NN,              LCTL_T(KC_SLSH),
+        KC_Z,                KC_X,                KC_C,                KC_V,                KC_K,                KC_H,                KC_M,                KC_EQL,              KC_INT3,             LCTL_T(KC_SLSH),
         LSFT_T(KC_TAB),      XXXXXXX,             XXXXXXX,             XXXXXXX,             LT(KL_OPE, KC_COMM), LT(KL_FUN, KC_SPACE),XXXXXXX,             XXXXXXX,             XXXXXXX,             LALT_T(KC_GRV)
     ),
 
@@ -294,7 +285,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [KL_OPE] = LAYOUT(
         CKC_EXIT,            CKC_WA,              KC_MS_UP,            CKC_FU,              CKC_BE,              CKC_WO,              CKC_NU,              KC_UP,               CKC_RO,              LGUI_T(KC_LBRC),
         CKC_ZA,              KC_MS_LEFT,          KC_MS_DOWN,          KC_MS_RIGHT,         KC_BTN1,             KC_HOME,             KC_LEFT,             KC_DOWN,             KC_RIGHT,            KC_END,
-        KC_LSFT,             KC_WH_U,             KC_WH_D,             KC_BTN3,             KC_BTN2,             TD(TD_BRACKET_L),    TD(TD_BRACKET_R),    TD(TD_QUOTE),        CKC_NNN,             LCTL_T(KC_INT1),
+        KC_LSFT,             KC_WH_U,             KC_WH_D,             KC_BTN3,             KC_BTN2,             TD(TD_BRACKET_L),    TD(TD_BRACKET_R),    TD(TD_QUOTE),        CKC_NN,              LCTL_T(KC_INT1),
         LT(KL_SYMNUM, KC_TAB),XXXXXXX,            XXXXXXX,             XXXXXXX,             _______,             LSFT_T(KC_ENT),      XXXXXXX,             XXXXXXX,             XXXXXXX,             LALT_T(KC_QUOT)
     ),
 
@@ -302,7 +293,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [KL_FUN] = LAYOUT(
         LCTL(KC_0),          LCTL(KC_1),          LCTL(KC_2),          LCTL(KC_3),          LCTL(KC_4),          CKC_NYU,             CKC_RYA,             CKC_RYU,             CKC_RYO,             LGUI_T(KC_F10),
         KC_F1,               KC_F2,               KC_F3,               KC_F4,               KC_F5,               KC_F6,               KC_F7,               KC_F8,               KC_F9,               KC_F11,
-        RCS(KC_E),           LCAG(KC_N),          RCS(KC_I),           RCS(KC_EQL),         RCS(KC_LBRC),        LCA(KC_DOWN),        LCA(KC_UP),          LCA(KC_LEFT),        LCA(KC_RGHT),        LCTL_T(KC_F12),
+        RCS(KC_E),           LCAG(KC_N),          RCS(KC_I),           RCS(KC_EQL),         RCS(KC_LBRC),        LCA(KC_LEFT),        LCA(KC_RGHT),        LCA(KC_DOWN),        LCA(KC_UP),          LCTL_T(KC_F12),
         LCTL(KC_SLSH),       XXXXXXX,             XXXXXXX,             XXXXXXX,             RCS(KC_P),           _______,             XXXXXXX,             XXXXXXX,             XXXXXXX,             MO(KL_SYMNUM)
     ),
 
