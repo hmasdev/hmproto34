@@ -24,6 +24,8 @@ jobs:
       - name: Check Version
         run: |
           # Check if the tag is the same as the version in info.json
-          export tag=$(echo "${{ inputs.tag }}" | cut -d / -f 3)
+          export tag=$(echo "$INPUTS_TAG" | cut -d / -f 3)
           echo "extracted tag: $tag"
           grep "\"device_version\": \"$tag\"" info.json || (echo "Version mismatch" && exit 1)
+        env:
+          INPUTS_TAG: ${{ inputs.tag }}
