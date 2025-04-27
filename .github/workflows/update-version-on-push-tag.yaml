@@ -12,10 +12,15 @@ jobs:
     uses: ./.github/workflows/validate-version-workflow-call.yaml
     with:
       tag: ${{ github.ref }}
+    permissions:
+      contents: read
   update-version:
     needs: [validate-version]
     if: ${{ failure() }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       - name: Update Version

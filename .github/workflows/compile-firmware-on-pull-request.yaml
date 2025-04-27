@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.list-keymaps.outputs.matrix }}
+    permissions:
+      contents: read
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -25,6 +27,8 @@ jobs:
     needs: list-keymaps
     strategy:
       matrix: ${{fromJson(needs.list-keymaps.outputs.matrix)}}
+    permissions:
+      contents: read
     uses: ./.github/workflows/compile-firmware-workflow-call.yaml
     with:
       git-ref: ${{ github.ref }}

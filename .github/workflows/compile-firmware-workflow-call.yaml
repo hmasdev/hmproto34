@@ -29,6 +29,8 @@ on:
 jobs:
   compile:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Setup Repository
         uses: actions/checkout@v4
