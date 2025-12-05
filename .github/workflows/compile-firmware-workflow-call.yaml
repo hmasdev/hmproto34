@@ -50,7 +50,8 @@ jobs:
       - name: Copy my keyboards into qmk_firmsware
         run: |
           mkdir -p ~/qmk_firmware/keyboards/hmproto34
-          cp -r ./* ~/qmk_firmware/keyboards/hmproto34 || echo 'failed to copy'
+          cp keyboard.json rules.mk config.h hmproto34.h ~/qmk_firmware/keyboards/hmproto34/
+          cp -r keymaps ~/qmk_firmware/keyboards/hmproto34/
       - name: Compile
         run: |
           cd ~/qmk_firmware
